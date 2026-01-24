@@ -51,131 +51,62 @@ export default function LoginCard() {
     }
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '80vh',
-                padding: 20,
-            }}
-        >
+        <div className="min-h-[80vh] p-5 flex items-center justify-center">
             <div
                 role="region"
                 aria-label="Login card"
-                style={{
-                    width: '100%',
-                    maxWidth: 720,
-                    background: 'linear-gradient(180deg,#0b0b0b,#050505)',
-                    color: '#fff',
-                    borderRadius: 14,
-                    boxShadow: '0 12px 40px rgba(0,0,0,0.7)',
-                    padding: '36px',
-                    textAlign: 'center',
-                    border: '1px solid rgba(255,255,255,0.04)',
-                }}
+                className="w-full max-w-[720px] bg-gradient-to-b from-[#0b0b0b] to-[#050505] text-white rounded-[14px] shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-9 text-center border border-white/5"
             >
-                <div
-                    style={{
-                        display: 'inline-block',
-                        padding: '6px 12px',
-                        background: 'rgba(29,185,84,0.12)',
-                        color: '#1DB954',
-                        borderRadius: 999,
-                        fontWeight: 700,
-                        fontSize: 30,
-                        marginBottom: 18,
-                    }}
-                >
+                <div className="inline-block px-3 py-1.5 bg-[rgba(29,185,84,0.12)] text-[#1DB954] rounded-full font-extrabold text-[30px] mb-4">
                     Welcome
                 </div>
 
-                <h1
-                    style={{
-                        margin: 0,
-                        fontSize: 28,
-                        fontWeight: 700,
-                        letterSpacing: -0.5,
-                        color: '#fff',
-                    }}
-                >
+                <h1 className="m-0 text-[28px] font-extrabold tracking-tight text-white">
                     Explore your music with Spotify Toolbox
                 </h1>
 
-                <p
-                    style={{
-                        marginTop: 12,
-                        marginBottom: 22,
-                        color: 'rgba(255,255,255,0.72)',
-                        fontSize: 15,
-                        lineHeight: 1.4,
-                    }}
-                >
+                <p className="mt-3 mb-5 text-[15px] leading-[1.4] text-white/70">
                     Sign in with your Spotify account to analyze playlists, discover recommendations,
                     and build personalized listening experiences.
                 </p>
 
-                <div style={{ display: 'flex', justifyContent: 'center', gap: 12 }}>
-                    {
-                        loading ?
-                            <>
-                                <Button
-                                    disabled
-                                    aria-label="Continue with Spotify"
-                                    style={{
-                                        background: '#1DB954',
-                                        color: '#000',
-                                        border: 'none',
-                                        padding: '12px 20px',
-                                        borderRadius: 999,
-                                        fontWeight: 800,
-                                        cursor: 'pointer',
-                                        fontSize: 15,
-                                        boxShadow: '0 10px 30px rgba(29,185,84,0.16)',
-                                    }}
-                                >
-                                    <Spinner data-icon="inline-start" />
-                                    Loading
-                                </Button>
-                            </> :
-                            <>
-                                <Button
-                                    onClick={() => startOAuthProcess()}
-                                    aria-label="Continue with Spotify"
-                                    style={{
-                                        background: '#1DB954',
-                                        color: '#000',
-                                        border: 'none',
-                                        padding: '12px 20px',
-                                        borderRadius: 999,
-                                        fontWeight: 800,
-                                        cursor: 'pointer',
-                                        fontSize: 15,
-                                        boxShadow: '0 10px 30px rgba(29,185,84,0.16)',
-                                    }}
-                                >
-                                    Continue with Spotify
-                                </Button>
-                            </>
-                    }
+                <div className="flex justify-center gap-3">
+                    {loading ? (
+                        <Button
+                            disabled
+                            aria-label="Continue with Spotify"
+                            className="bg-[#1DB954] text-black border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] inline-flex items-center gap-2"
+                        >
+                            <Spinner data-icon="inline-start" />
+                            Loading
+                        </Button>
+                    ) : (
+                        <Button
+                            onClick={() => startOAuthProcess()}
+                            aria-label="Continue with Spotify"
+                            className="bg-[#1DB954] text-black border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)]"
+                        >
+                            Continue with Spotify
+                        </Button>
+                    )}
 
                     <Drawer>
                         <DrawerTrigger asChild>
-                            <Button variant="ghost">
+                            <Button variant="ghost" className="inline-flex items-center gap-2">
                                 <BookAudio data-icon="inline-start" />
                                 <span>
                                     Learn more
                                 </span>
                             </Button>
                         </DrawerTrigger>
-                        <DrawerContent >
+                        <DrawerContent>
                             <DrawerHeader>
                                 <DrawerTitle>Logging in with Spotify lets me unlock cool functions with your Spotify</DrawerTitle>
                                 <DrawerDescription>This website uses OAuth2 standard flow to let you authorize access to your Spotify account.</DrawerDescription>
                             </DrawerHeader>
                             <DrawerFooter>
                                 <DrawerClose asChild>
-                                    <Button variant="outline">
+                                    <Button variant="outline" className="inline-flex items-center gap-2">
                                         <span>Good talk</span>
                                         <HeartHandshake data-icon="inline-end" />
                                     </Button>
@@ -185,7 +116,7 @@ export default function LoginCard() {
                     </Drawer>
                 </div>
 
-                <p style={{ marginTop: 16, color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>
+                <p className="mt-4 text-white/50 text-xs">
                     We only request the permissions needed to enhance your experience.
                 </p>
             </div>
