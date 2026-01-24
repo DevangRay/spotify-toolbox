@@ -1,5 +1,6 @@
 'use client';
 import { useState } from "react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
@@ -86,7 +87,17 @@ export default function LoginCard() {
                             aria-label="Continue with Spotify"
                             className="bg-[#1DB954] text-black border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)]"
                         >
-                            Continue with Spotify
+                            <span>
+                                Continue with Spotify
+                            </span>
+                            <Image
+                                src="/spotify-icon-png-15404.png"
+                                alt="Spotify Logo"
+                                width={20}
+                                height={20}
+                                className="inline-block"
+                                data-icon="inline-start"
+                            />
                         </Button>
                     )}
 
