@@ -93,10 +93,9 @@ export default function LoginCard() {
                             <Image
                                 src="/spotify-icon-png-15404.png"
                                 alt="Spotify Logo"
-                                width={20}
-                                height={20}
-                                className="inline-block"
-                                data-icon="inline-start"
+                                width={30}
+                                height={30}
+                                className="inline-block ml-[-7] mr-[-7]"
                             />
                         </Button>
                     )}
