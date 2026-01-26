@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { Spinner } from "@/components/ui/spinner";
 import { BookAudio, HeartHandshake } from "lucide-react";
+import { signIn } from "next-auth/react";
 
 export default function LoginCard() {
     const [loading, setLoading] = useState(false);
@@ -83,7 +84,8 @@ export default function LoginCard() {
                         </Button>
                     ) : (
                         <Button
-                            onClick={() => startOAuthProcess()}
+                            // onClick={() => startOAuthProcess()}
+                            onClick={() => signIn("google")}
                             aria-label="Continue with Spotify"
                             className="bg-[#1DB954] text-black border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)]"
                         >
