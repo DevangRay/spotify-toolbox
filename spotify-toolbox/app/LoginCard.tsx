@@ -80,7 +80,7 @@ export default function LoginCard() {
                             <Button
                                 disabled
                                 aria-label="Continue with Spotify"
-                                className="bg-spotify-background hover:bg-spotify-foreground border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] inline-flex items-center gap-2"
+                                className="bg-spotify-background border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] inline-flex items-center gap-2"
                             >
                                 <Spinner data-icon="inline-start" />
                                 Loading
@@ -92,7 +92,7 @@ export default function LoginCard() {
                                     signIn("google")
                                 }}
                                 aria-label="Continue with Spotify"
-                                className="bg-spotify-background hover:bg-spotify-foreground border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] cursor-pointer"
+                                className="bg-spotify-foreground hover:bg-spotify-background text-black hover:text-foreground border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] cursor-pointer"
                             >
                                 <span>
                                     Continue with Spotify
