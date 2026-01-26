@@ -7,6 +7,7 @@ import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, Dr
 import { Spinner } from "@/components/ui/spinner";
 import { BookAudio, HeartHandshake } from "lucide-react";
 import { signIn } from "next-auth/react";
+import { ThemeToggleButton } from "./ThemeToggleButton";
 
 export default function LoginCard() {
     const [loading, setLoading] = useState(false);
@@ -53,85 +54,90 @@ export default function LoginCard() {
     }
 
     return (
-        <div className="min-h-[80vh] p-5 flex items-center justify-center">
-            <div
-                role="region"
-                aria-label="Login card"
-                className="w-full max-w-[720px] bg-gradient-to-b from-[#0b0b0b] to-[#050505] text-white rounded-[14px] shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-9 text-center border border-white/5"
-            >
-                <div className="inline-block px-3 py-1.5 bg-[rgba(29,185,84,0.12)] text-[#1DB954] rounded-full font-extrabold text-[30px] mb-4">
-                    Welcome
-                </div>
+        <>
+            <ThemeToggleButton className="absolute top-5 right-5"/>
+            <div className="min-h-[80vh] p-5 flex items-center justify-center">
+                <div
+                    role="region"
+                    aria-label="Login card"
+                    className="w-full max-w-[720px] bg-card rounded-[14px] shadow-[0_12px_40px_rgba(0,0,0,0.7)] p-9 text-center border border-white/5"
+                >
+                    <div className="inline-block px-3 py-1.5 bg-spotify-background text-spotify-foreground rounded-full font-extrabold text-[30px] mb-4">
+                        Welcome
+                    </div>
 
-                <h1 className="m-0 text-[28px] font-extrabold tracking-tight text-white">
-                    Explore your music with Spotify Toolbox
-                </h1>
+                    <h1 className="m-0 text-[28px] font-extrabold tracking-tight">
+                        Explore your music with Spotify Toolbox
+                    </h1>
 
-                <p className="mt-3 mb-5 text-[15px] leading-[1.4] text-white/70">
-                    Sign in with your Spotify account to analyze playlists, discover recommendations,
-                    and build personalized listening experiences.
-                </p>
+                    <p className="mt-3 mb-5 text-[15px] leading-[1.4]">
+                        Sign in with your Spotify account to analyze playlists, discover recommendations,
+                        and build personalized listening experiences.
+                    </p>
 
-                <div className="flex justify-center gap-3">
-                    {loading ? (
-                        <Button
-                            disabled
-                            aria-label="Continue with Spotify"
-                            className="bg-[#1DB954] text-black border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] inline-flex items-center gap-2"
-                        >
-                            <Spinner data-icon="inline-start" />
-                            Loading
-                        </Button>
-                    ) : (
-                        <Button
-                            // onClick={() => startOAuthProcess()}
-                            onClick={() => signIn("google")}
-                            aria-label="Continue with Spotify"
-                            className="bg-[#1DB954] text-black border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)]"
-                        >
-                            <span>
-                                Continue with Spotify
-                            </span>
-                            <Image
-                                src="/spotify-icon-png-15404.png"
-                                alt="Spotify Logo"
-                                width={30}
-                                height={30}
-                                className="inline-block ml-[-7] mr-[-7]"
-                            />
-                        </Button>
-                    )}
-
-                    <Drawer>
-                        <DrawerTrigger asChild>
-                            <Button variant="ghost" className="inline-flex items-center gap-2">
-                                <BookAudio data-icon="inline-start" />
-                                <span>
-                                    Learn more
-                                </span>
+                    <div className="flex justify-center gap-3">
+                        {loading ? (
+                            <Button
+                                disabled
+                                aria-label="Continue with Spotify"
+                                className="bg-spotify-background hover:bg-spotify-foreground border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] inline-flex items-center gap-2"
+                            >
+                                <Spinner data-icon="inline-start" />
+                                Loading
                             </Button>
-                        </DrawerTrigger>
-                        <DrawerContent>
-                            <DrawerHeader>
-                                <DrawerTitle>Logging in with Spotify lets me unlock cool functions with your Spotify</DrawerTitle>
-                                <DrawerDescription>This website uses OAuth2 standard flow to let you authorize access to your Spotify account.</DrawerDescription>
-                            </DrawerHeader>
-                            <DrawerFooter>
-                                <DrawerClose asChild>
-                                    <Button variant="outline" className="inline-flex items-center gap-2">
-                                        <span>Good talk</span>
-                                        <HeartHandshake data-icon="inline-end" />
-                                    </Button>
-                                </DrawerClose>
-                            </DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                </div>
+                        ) : (
+                            <Button
+                                onClick={() => {
+                                    setLoading(true);
+                                    signIn("google")
+                                }}
+                                aria-label="Continue with Spotify"
+                                className="bg-spotify-background hover:bg-spotify-foreground border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] cursor-pointer"
+                            >
+                                <span>
+                                    Continue with Spotify
+                                </span>
+                                <Image
+                                    src="/spotify-icon-png-15404.png"
+                                    alt="Spotify Logo"
+                                    width={30}
+                                    height={30}
+                                    className="inline-block ml-[-7] mr-[-7]"
+                                />
+                            </Button>
+                        )}
 
-                <p className="mt-4 text-white/50 text-xs">
-                    We only request the permissions needed to enhance your experience.
-                </p>
+                        <Drawer>
+                            <DrawerTrigger asChild>
+                                <Button variant="ghost" className="inline-flex items-center gap-2 rounded-full text-sm cursor-pointer">
+                                    <BookAudio data-icon="inline-start" />
+                                    <span>
+                                        Learn more
+                                    </span>
+                                </Button>
+                            </DrawerTrigger>
+                            <DrawerContent className="bg-sidebar">
+                                <DrawerHeader>
+                                    <DrawerTitle>Logging in with Spotify lets me unlock cool functions with your Spotify</DrawerTitle>
+                                    <DrawerDescription>This website uses OAuth2 standard flow to let you authorize access to your Spotify account.</DrawerDescription>
+                                </DrawerHeader>
+                                <DrawerFooter>
+                                    <DrawerClose asChild>
+                                        <Button variant="outline" className="inline-flex items-center gap-2">
+                                            <span>Good talk</span>
+                                            <HeartHandshake data-icon="inline-end" />
+                                        </Button>
+                                    </DrawerClose>
+                                </DrawerFooter>
+                            </DrawerContent>
+                        </Drawer>
+                    </div>
+
+                    <p className="mt-4 text-xs text-muted-foreground">
+                        We only request the permissions needed to enhance your experience.
+                    </p>
+                </div>
             </div>
-        </div>
+        </>
     );
 }

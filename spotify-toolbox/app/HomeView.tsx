@@ -1,23 +1,19 @@
 import { auth } from "@/app/auth";
-import LoginCard from "./LoginCard";
-import HomePage from "./HomePage";
+import LoginCard from "@/app/LoginCard";
+import HomePage from "@/app/HomePage";
+import { ThemeToggleButton } from "@/app/ThemeToggleButton";
 
 export default async function HomeView() {
     const session = await auth()
 
-    if (!session) {
-        // User is not authenticated, landing page
-        return (
-            <>
-                <LoginCard />
-            </>
-        )
-    }
-
-    // User is authenticated, show home page
     return (
         <>
-            <HomePage />
+            <div className="flex flex-col">
+                {/* <ThemeToggleButton /> */}
+                {
+                    session ? <HomePage /> : <LoginCard />
+                }
+            </div>
         </>
     )
 }
