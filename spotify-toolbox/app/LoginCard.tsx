@@ -123,7 +123,7 @@ export default function LoginCard() {
                                 </DrawerHeader>
                                 <DrawerFooter>
                                     <DrawerClose asChild>
-                                        <Button variant="outline" className="inline-flex items-center gap-2">
+                                        <Button variant="outline" className="inline-flex items-center gap-2 cursor-pointer">
                                             <span>Good talk</span>
                                             <HeartHandshake data-icon="inline-end" />
                                         </Button>
