@@ -8,12 +8,9 @@ export default async function HomeView() {
 
     return (
         <>
-            <div className="flex flex-col">
-                {/* <ThemeToggleButton /> */}
-                {
-                    session ? <HomePage /> : <LoginCard />
-                }
-            </div>
+            {
+                session ? <HomePage /> : <LoginCard />
+            }
         </>
     )
 }
