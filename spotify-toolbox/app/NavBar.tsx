@@ -45,7 +45,7 @@ export default function NavBar() {
     return (
         <>
             <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container flex h-16 min-w-screen items-center justify-between py-10 px-5">
+                <div className="container flex h-16 max-w-screen items-center justify-between py-10 px-5">
                     {/* Logo/Title */}
                     <div className="flex items-center gap-2">
                         <Music className="h-6 w-6 text-spotify-foreground" />
