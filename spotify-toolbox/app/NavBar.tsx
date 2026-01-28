@@ -14,7 +14,7 @@ export default function NavBar() {
     // Detect screen width changes at 900px breakpoint
     useEffect(() => {
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 900);
+            setIsMobile(window.innerWidth < 640);
         };
 
         checkMobile();
@@ -44,8 +44,8 @@ export default function NavBar() {
 
     return (
         <>
-            <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container flex h-16 max-w-screen items-center justify-between py-10 px-5">
+            <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-5">
+                <div className="bg-card container flex h-16 max-w-screen-1x2 mx-auto py-10 px-6 rounded-[1.4vw] shadow-xl items-center justify-between">
                     {/* Logo/Title */}
                     <div className="flex items-center gap-2">
                         <Music className="h-6 w-6 text-spotify-foreground" />
@@ -93,7 +93,7 @@ export default function NavBar() {
                 <div
                     data-dropdown
                     className={`
-                        fixed left-0 right-0 z-40 
+                        fixed left-0 right-0 z-40 pt-10
                         border-b border-border bg-background/95 backdrop-blur 
                         supports-[backdrop-filter]:bg-background/60
                         shadow-lg
