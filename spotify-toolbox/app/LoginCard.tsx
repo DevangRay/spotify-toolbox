@@ -55,7 +55,7 @@ export default function LoginCard() {
 
     return (
         <>
-            <ThemeToggleButton className="absolute top-5 right-5"/>
+            <ThemeToggleButton className="absolute top-5 right-5" />
             <div className="min-h-[80vh] p-5 flex items-center justify-center">
                 <div
                     role="region"
@@ -75,7 +75,7 @@ export default function LoginCard() {
                         and build personalized listening experiences.
                     </p>
 
-                    <div className="flex justify-center gap-3">
+                    <div className="flex flex-row max-sm:flex-col justify-center gap-3">
                         {loading ? (
                             <Button
                                 disabled
@@ -91,7 +91,7 @@ export default function LoginCard() {
                                     setLoading(true);
                                     signIn("google")
                                 }}
-                                aria-label="Continue with Spotify"
+                                aria-label="Spotify Login Button"
                                 className="bg-spotify-foreground hover:bg-spotify-background text-black hover:text-white border-0 px-5 py-3 rounded-full font-extrabold text-sm shadow-[0_10px_30px_rgba(29,185,84,0.16)] cursor-pointer"
                             >
                                 <span>
@@ -123,7 +123,7 @@ export default function LoginCard() {
                                 </DrawerHeader>
                                 <DrawerFooter>
                                     <DrawerClose asChild>
-                                        <Button variant="outline" className="inline-flex items-center gap-2 cursor-pointer">
+                                        <Button variant="outline" className="inline-flex mx-auto items-center gap-2 cursor-pointer w-fit px-100">
                                             <span>Good talk</span>
                                             <HeartHandshake data-icon="inline-end" />
                                         </Button>
