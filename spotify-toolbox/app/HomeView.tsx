@@ -1,15 +1,15 @@
-import { auth } from "@/app/auth";
+import { getSession } from "@/lib/auth-helpers";
 import LoginCard from "@/app/LoginCard";
 import HomePage from "@/app/HomePage";
-import { ThemeToggleButton } from "@/app/ThemeToggleButton";
 
 export default async function HomeView() {
-    const session = await auth()
+    const session = await getSession();
+    const isAuthenticated = !!session;
 
     return (
         <>
             {
-                session ? <HomePage /> : <LoginCard />
+                isAuthenticated ? <HomePage /> : <LoginCard />
             }
         </>
     )

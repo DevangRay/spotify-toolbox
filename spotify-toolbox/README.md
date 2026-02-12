@@ -1,3 +1,12 @@
+# DEBUGGING HELP
+* Want to run some of the scripts to test OAuth & DB Connection?
+  * Use `npx dotenv -e .env.local -- npx tsx .\scripts\[name of file]]`
+* Updated OAuth and need to reflect changes in DB?
+  * Use `npx dotenv -e .env.local -- npx @better-auth/cli generate`
+  * Use `npx dotenv -e .env.local -- npx @better-auth/cli migrate`
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

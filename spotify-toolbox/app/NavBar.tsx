@@ -4,12 +4,15 @@ import { ThemeToggleButton } from "./ThemeToggleButton";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Menu, LogOut, Music, X } from "lucide-react";
-import { signOut } from "next-auth/react";
+
 import { useState, useEffect } from "react";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
     const [isMobile, setIsMobile] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
 
     // Detect screen width changes at 900px breakpoint
     useEffect(() => {
@@ -37,10 +40,15 @@ export default function NavBar() {
         return () => document.removeEventListener('click', handleClickOutside);
     }, [isOpen]);
 
-    const handleSignOut = () => {
-        setIsOpen(false);
-        signOut();
-    };
+    async function handleSignOut() {
+        await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    router.push("/");
+                }
+            }
+        });
+    }
 
     return (
         <>

@@ -1,11 +1,10 @@
-import { auth } from "@/app/auth"
-import { signOut } from "@/app/auth";
+import { getSession } from "@/lib/auth-helpers";
 import NavBar from "@/app/NavBar";
 
 export default async function HomePage() {
-    const session = await auth();
-
+    const session = await getSession();
     console.dir(session);
+    
     return (
         <>
             <div>
@@ -14,6 +13,7 @@ export default async function HomePage() {
                     Scroll me
                 </div>
                 <h1>Hello, {session?.user?.name}</h1>
+                <h2>Be warned, I can contact you at {session?.user?.email} whenever I want...</h2>
                 <img
                     src={session?.user?.image || ""}
                     alt="User Avatar"
