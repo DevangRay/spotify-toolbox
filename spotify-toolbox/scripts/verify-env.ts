@@ -1,5 +1,5 @@
-function verifyEnv() {
-    console.log('🔍 Verifying Environment Setup\n');
+export function verifyEnv() {
+    console.log('Verifying Environment Setup\n');
 
     const requiredVars = [
         'SUPABASE_CONNECTION_STRING',
@@ -20,11 +20,9 @@ function verifyEnv() {
     });
 
     if (allPresent) {
-        console.log(`Environment setup looks good! \n Next step: Run "npx tsx scripts/test-db-connection.ts"`);
+        console.log(`Environment setup looks good!`);
     } else {
         console.log('Missing/invalid environment variables. Need to fix');
         process.exit(1);
     }
 }
-
-verifyEnv();

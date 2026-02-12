@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
 
-async function testConnection() {
+export async function testConnection() {
   console.log('Testing Supabase PostgreSQL connection...\n');
   
   const connectionString = process.env.SUPABASE_CONNECTION_STRING;
@@ -60,11 +60,6 @@ async function testConnection() {
     await pool.end();
     
     console.log('All connection tests passed!');
-    console.log('You can now safely run:');
-    console.log('npx dotenv -e .env.local -- npx @better-auth/cli generate');
-    console.log('npx dotenv -e .env.local -- npx @better-auth/cli migrate');
-    
-    process.exit(0);
   } catch (error) {
     console.error('Connection test failed:\n');
     
@@ -92,5 +87,3 @@ async function testConnection() {
     process.exit(1);
   }
 }
-
-testConnection();

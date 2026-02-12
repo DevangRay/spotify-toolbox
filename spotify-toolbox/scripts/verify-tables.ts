@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
 
-async function verifyTables() {
+export async function verifyTables() {
   const pool = new Pool({
     connectionString: process.env.SUPABASE_CONNECTION_STRING,
   });
@@ -45,5 +45,3 @@ async function verifyTables() {
     process.exit(1);
   }
 }
-
-verifyTables();
